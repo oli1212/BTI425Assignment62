@@ -1,14 +1,10 @@
-import Link from 'next/link';
 import Error from 'next/error';
 import useSWR from 'swr'
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+export default function ArtworkCardDetail(object) {
 
-export default function ArtworkCardDetail(objectID) {
-
-    const { data, error } = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`, fetcher);
+    const { data, error } = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${object.objectID}`);
 
     if (error) {
         return <Error statusCode={404} />;
@@ -21,7 +17,7 @@ export default function ArtworkCardDetail(objectID) {
     const { primaryImageSmall, title, objectDate, classification, medium, artistDisplayName, creditLine, dimensions } = data;
 
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card>
             {primaryImageSmall ? (
                 <Card.Img variant="top" src={data.primaryImage} />
             ) : (
@@ -30,17 +26,14 @@ export default function ArtworkCardDetail(objectID) {
             <Card.Body>
                 <Card.Title>{title || 'N/A'}</Card.Title>
                 <Card.Text>
-                    Date: {objectDate || 'N/A'} <br />
-                    Classification: {classification || 'N/A'} <br />
-                    Medium: {medium || 'N/A'}
+                    <b>Date:</b> {objectDate || 'N/A'} <br />
+                    <b>Classification:</b> {classification || 'N/A'} <br />
+                    <b>Medium:</b> {medium || 'N/A'}
                     <br /> <br />
-                    Artist: {artistDisplayName || 'N/A'} (<a href={data.artistWikidata_URL} target="_blank" rel="noreferrer" >wiki</a>) <br />
-                    Credit Line: {creditLine || 'N/A'} <br />
-                    Dimensions: {dimensions || 'N/A'}
+                    <b>Artist:</b> {artistDisplayName || 'N/A'} (<a href={data.artistWikidata_URL} target="_blank" rel="noreferrer" >wiki</a>) <br />
+                    <b>Credit Line:</b> {creditLine || 'N/A'} <br />
+                    <b>Dimensions:</b> {dimensions || 'N/A'}
                 </Card.Text>
-                <Link href={`/artwork/${objectID}`} passHref>
-                    <Button variant="primary">{objectID}</Button>
-                </Link>
             </Card.Body>
         </Card>
     );

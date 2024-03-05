@@ -4,11 +4,9 @@ import useSWR from 'swr'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+export default function ArtworkCard(object) {
 
-export default function ArtworkCard(objectID) {
-
-    const { data, error } = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectID}`, fetcher);
+    const { data, error } = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${object.objectID}`);
 
     if (error) {
         return <Error statusCode={404} />;
@@ -21,7 +19,7 @@ export default function ArtworkCard(objectID) {
     const { primaryImageSmall, title, objectDate, classification, medium } = data;
 
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card>
             {primaryImageSmall ? (
                 <Card.Img variant="top" src={primaryImageSmall} />
             ) : (
@@ -34,8 +32,8 @@ export default function ArtworkCard(objectID) {
                     Classification: {classification || 'N/A'} <br />
                     Medium: {medium || 'N/A'}
                 </Card.Text>
-                <Link href={`/artwork/${objectID}`} passHref>
-                    <Button variant="primary">{objectID}</Button>
+                <Link href={`/artwork/${object.objectID}`} passHref legacyBehavior>
+                    <Button variant="btn btn-outline-primary"><b>ID:</b> {object.objectID}</Button>
                 </Link>
             </Card.Body>
         </Card>

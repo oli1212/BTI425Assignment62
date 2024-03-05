@@ -43,7 +43,7 @@ export default function MainNav() {
               value={searchField}
               onChange={changeForm}
             />
-            <Button type="submit" class="btn btn-success">Search</Button>
+            <Button type="submit" variant="btn btn-success">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>

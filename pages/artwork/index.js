@@ -3,12 +3,11 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
+import { Pagination } from "react-bootstrap";
 import useSWR from 'swr'
 import ArtworkCard from "@/components/ArtworkCard";
 
 const PER_PAGE = 12;
-
-const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function ArtWorkHome() {
     const [artworkList, setArtworkList] = useState();
@@ -16,7 +15,7 @@ export default function ArtWorkHome() {
     const router = useRouter();
     let finalQuery = router.asPath.split('?')[1];
 
-    const { data, error } = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/search?${finalQuery}`, fetcher);
+    const { data, error } = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/search?${finalQuery}`);
 
     useEffect(() => {
         if (data) {
@@ -58,7 +57,7 @@ export default function ArtWorkHome() {
                         <ArtworkCard objectID={currentObjectID} />
                     </Col>
                 ))}
-                {artworkList.length === 0 && (
+                {artworkList[page -1]?.length === 0 && (
                     <Card>
                         <Card.Body>
                             <h4>Nothing Here</h4>
