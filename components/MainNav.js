@@ -3,6 +3,9 @@ import { useRouter } from 'next/router';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Link from 'next/link';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 export default function MainNav() {
     const router = useRouter();
@@ -18,12 +21,12 @@ export default function MainNav() {
     }
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="fixed-top navbar-dark bg-primary">
       <Container>
         <Navbar.Brand>Oscar Li</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="navbar-dark">
+          <Nav className="me-auto">
             <Link href="/" passHref legacyBehavior>
                 <Nav.Link>Home</Nav.Link>
             </Link>
@@ -40,10 +43,10 @@ export default function MainNav() {
               value={searchField}
               onChange={changeForm}
             />
-            <Button type="submit" variant="outline-success">Search</Button>
+            <Button type="submit" class="btn btn-success">Search</Button>
           </Form>
         </Navbar.Collapse>
-      </Container><br /><br />
+      </Container>
     </Navbar>
   );
 }
