@@ -68,6 +68,7 @@ export default function ArtWorkHome() {
                 </Card.Body>
             </Card>
         )}
+        <br />
         {artworkList.length > 0 && (
             <Row className="gy-4">
                 <Col>
