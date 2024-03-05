@@ -45,6 +45,7 @@ export default function MainNav() {
             />
             <Button type="submit" variant="btn btn-success">Search</Button>
           </Form>
+          <br />
         </Navbar.Collapse>
       </Container>
     </Navbar>
