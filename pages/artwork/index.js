@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { Pagination } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col'
-import useSWR from 'swr'
+import Col from 'react-bootstrap/Col';
+import useSWR from 'swr';
 import ArtworkCard from "@/components/ArtworkCard";
 import Card from 'react-bootstrap/Card';
 

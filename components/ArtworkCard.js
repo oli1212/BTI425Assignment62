@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Error from 'next/error';
-import useSWR from 'swr'
+import useSWR from 'swr';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 

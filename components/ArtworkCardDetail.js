@@ -1,5 +1,5 @@
 import Error from 'next/error';
-import useSWR from 'swr'
+import useSWR from 'swr';
 import Card from 'react-bootstrap/Card';
 
 export default function ArtworkCardDetail(object) {
