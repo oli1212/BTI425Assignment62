@@ -1,3 +1,13 @@
+/*********************************************************************************
+*  WEB422 – Assignment 4
+*  I declare that this assignment is my own work in accordance with Seneca Academic Policy.  
+*  No part of this assignment has been copied manually or electronically from any other source
+*  (including web sites) or distributed to other students.
+* 
+*  Name: Oscar Li Student ID: 154348197 Date: Tuesday, March 5th, 2024
+*
+********************************************************************************/ 
+
 import Image from 'react-bootstrap/Image';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
