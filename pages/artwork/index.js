@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { Pagination } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
-import { Pagination } from "react-bootstrap";
 import useSWR from 'swr'
 import ArtworkCard from "@/components/ArtworkCard";
+import Card from 'react-bootstrap/Card';
 
 const PER_PAGE = 12;
 
@@ -57,15 +58,15 @@ export default function ArtWorkHome() {
                         <ArtworkCard objectID={currentObjectID} />
                     </Col>
                 ))}
-                {artworkList[page -1]?.length === 0 && (
-                    <Card>
-                        <Card.Body>
-                            <h4>Nothing Here</h4>
-                            Try searching for something else
-                        </Card.Body>
-                    </Card>
-                )}
             </Row>
+        )}
+        {artworkList.length === 0 && (
+            <Card>
+                <Card.Body>
+                    <h4>Nothing Here</h4>
+                    Try searching for something else
+                </Card.Body>
+            </Card>
         )}
         {artworkList.length > 0 && (
             <Row className="gy-4">
