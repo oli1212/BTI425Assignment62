@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 
 export default function ArtworkCard(object) {
 
-    const { data, error } = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${object.objectID}`);
+    const { data, error } = useSWR(object.objectID ? `https://collectionapi.metmuseum.org/public/collection/v1/objects/${object.objectID}` : null);
 
     if (error) {
         return <Error statusCode={404} />;
